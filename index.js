@@ -12,6 +12,17 @@ const folderPath = path.join(os.tmpdir(), "timestamps");
 // Middleware to parse JSON bodies
 server.use(express.json());
 
+server.get("/", (req, res) => {
+  const endpoints = server._router.stack
+    .filter((r) => r.route)
+    .map((r) => ({
+      path: r.route.path,
+      method: Object.keys(r.route.methods)[0].toUpperCase(),
+    }));
+
+  res.json({ endpoints });
+});
+
 // Endpoint to create a file with the current timestamp
 server.get("/create-file", (req, res) => {
   // Get the current date and time
