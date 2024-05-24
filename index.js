@@ -49,7 +49,7 @@ server.get("/create-file", (req, res) => {
     if (err) {
       return res.status(500).send("Error writing file");
     }
-    res.send(`File created: ${filename}`);
+    res.send(`File created: ${filename} stored on ${folderPath}`);
   });
 });
 
