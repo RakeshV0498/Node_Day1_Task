@@ -1,0 +1,36 @@
+Render URL - https://nodejs-filesystem-lic6.onrender.com/
+
+Endpoints:
+
+{
+  "endpoints": [
+    {
+      "path": "/",
+      "method": "GET"
+    },
+    {
+      "path": "/create-file",
+      "method": "GET"
+    },
+    {
+      "path": "/list-all-files",
+      "method": "GET"
+    },
+    {
+      "path": "/file-contents/:filename",
+      "method": "GET"
+    }
+  ]
+}
+
+GitHub Repo - https://github.com/RakeshV0498/nodejs-filesystem.git
+
+last Committed HashID - cbaa0e8c218b846578a09dbb6c0aa93b0f786a7a9 (Before Uploading this Text file)
+
+Postman Documentation - https://documenter.getpostman.com/view/35033389/2sA3QqfY7p 
+
+Comments - The files will be created in temp folder of the user, if the user downloads the server and run it in their local machine. 
+
+
+
+
