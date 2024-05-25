@@ -1,40 +1,138 @@
+```markdown
 # Timestamped File Creator API
 
-This is a simple Node.js API built with Express that allows users to create timestamped text files and list all files in a specified folder.
+This API allows users to create timestamped text files and list and read files from a specified folder. It is deployed on Render and can be accessed at the base URL: [https://nodejs-filesystem-lic6.onrender.com/](https://nodejs-filesystem-lic6.onrender.com/).
 
-## Features
+## Base URL
+```
 
-- Create a text file with the current timestamp.
-- List all files in the specified folder.
+https://nodejs-filesystem-lic6.onrender.com/
 
-## Prerequisites
+```
 
-- Node.js installed on your machine.
+## Endpoints
 
-## Installation
+### 1. Home
 
-1. Clone the repository:
+- **URL**: `/`
+- **Method**: `GET`
+- **Description**: A simple home endpoint to verify the API is running.
+- **Request Parameters**: None
+- **Response**:
+  - Status: `200 OK`
+  - Body: `"API is running"`
 
-2. Install dependencies:
+### 2. Create Timestamped File
 
-3. Start the server:
+- **URL**: `/create-file`
+- **Method**: `GET`
+- **Description**: Creates a timestamped text file in the system's temporary directory.
+- **Request Parameters**: None
+- **Response**:
+  - Status: `200 OK`
+  - Body: `File created: {filename}`
 
-The server will start listening on port 8100 by default.
+### 3. List All Files
 
-## Usage
+- **URL**: `/list-all-files`
+- **Method**: `GET`
+- **Description**: Lists all files in the specified folder.
+- **Request Parameters**: None
+- **Response**:
+  - Status: `200 OK`
+  - Body: JSON array of file paths
 
-### Create a Timestamped File
+### 4. Display File Contents
 
-To create a timestamped file, make a GET request to `/create-file` endpoint:
+- **URL**: `/file-contents/:filename`
+- **Method**: `GET`
+- **Description**: Displays the contents of a specific file.
+- **Request Parameters**:
+  - `:filename`: The name of the file whose contents you want to read.
+- **Response**:
+  - Status: `200 OK`
+  - Body: Contents of the file
+  - Status: `500 Internal Server Error` if the file cannot be read
 
-This will create a text file with the current timestamp in the system's temporary directory.
+## Example Requests
+
+### Create Timestamped File
+
+```
+
+GET https://nodejs-filesystem-lic6.onrender.com/create-file
+
+```
+
+Response:
+```
+
+File created: 24052024_180000.txt
+
+```
 
 ### List All Files
 
-To list all files in the specified folder, make a GET request to `/list-all-files` endpoint:
+```
 
-This will return a JSON object containing an array of all files in the folder.
+GET https://nodejs-filesystem-lic6.onrender.com/list-all-files
+
+````
+
+Response:
+```json
+{
+  "files": [
+    "/tmp/timestamps/24052024_180000.txt",
+    "/tmp/timestamps/24052024_180100.txt"
+  ]
+}
+````
+
+### Display File Contents
+
+```
+GET https://nodejs-filesystem-lic6.onrender.com/file-contents/24052024_180000.txt
+```
+
+Response:
+
+```
+This file is created by the user [username] and created at 24/05/2024, 18:00:00
+```
+
+## Installation
+
+1. **Clone the repository**:
+
+```bash
+git clone <repository-url>
+```
+
+2. **Navigate to the project directory**:
+
+```bash
+cd <project-directory>
+```
+
+3. **Install dependencies**:
+
+```bash
+npm install
+```
+
+4. **Start the server**:
+
+```bash
+npm start
+```
+
+The server will start listening on port 8100 by default.
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+```
+
+```
