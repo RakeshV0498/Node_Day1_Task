@@ -79,6 +79,19 @@ server.get("/list-all-files", (req, res) => {
   }
 });
 
+// Endpoint to display the contents of a specific file
+server.get('/file-contents/:filename', (req, res) => {
+  const filename = req.params.filename;
+  const filePath = path.join(folderPath, filename);
+
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      return res.status(500).send('Error reading file');
+    }
+    res.send(data);
+  });
+});
+
 // Start the server
 server.listen(port, () => {
   console.log(`${new Date().toString()}: Server listening on ${port}`);
